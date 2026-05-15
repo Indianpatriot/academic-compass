@@ -9,8 +9,62 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SummarizerRouteImport } from './routes/summarizer'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as PdfAnalyzerRouteImport } from './routes/pdf-analyzer'
+import { Route as LiteratureRouteImport } from './routes/literature'
+import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as CitationsRouteImport } from './routes/citations'
+import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SummarizerRoute = SummarizerRouteImport.update({
+  id: '/summarizer',
+  path: '/summarizer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PdfAnalyzerRoute = PdfAnalyzerRouteImport.update({
+  id: '/pdf-analyzer',
+  path: '/pdf-analyzer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiteratureRoute = LiteratureRouteImport.update({
+  id: '/literature',
+  path: '/literature',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KnowledgeRoute = KnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitationsRoute = CitationsRouteImport.update({
+  id: '/citations',
+  path: '/citations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +73,158 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/literature': typeof LiteratureRoute
+  '/pdf-analyzer': typeof PdfAnalyzerRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/literature': typeof LiteratureRoute
+  '/pdf-analyzer': typeof PdfAnalyzerRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
+  '/knowledge': typeof KnowledgeRoute
+  '/literature': typeof LiteratureRoute
+  '/pdf-analyzer': typeof PdfAnalyzerRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/assistant'
+    | '/citations'
+    | '/history'
+    | '/knowledge'
+    | '/literature'
+    | '/pdf-analyzer'
+    | '/reports'
+    | '/settings'
+    | '/summarizer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/assistant'
+    | '/citations'
+    | '/history'
+    | '/knowledge'
+    | '/literature'
+    | '/pdf-analyzer'
+    | '/reports'
+    | '/settings'
+    | '/summarizer'
+  id:
+    | '__root__'
+    | '/'
+    | '/assistant'
+    | '/citations'
+    | '/history'
+    | '/knowledge'
+    | '/literature'
+    | '/pdf-analyzer'
+    | '/reports'
+    | '/settings'
+    | '/summarizer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssistantRoute: typeof AssistantRoute
+  CitationsRoute: typeof CitationsRoute
+  HistoryRoute: typeof HistoryRoute
+  KnowledgeRoute: typeof KnowledgeRoute
+  LiteratureRoute: typeof LiteratureRoute
+  PdfAnalyzerRoute: typeof PdfAnalyzerRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  SummarizerRoute: typeof SummarizerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/summarizer': {
+      id: '/summarizer'
+      path: '/summarizer'
+      fullPath: '/summarizer'
+      preLoaderRoute: typeof SummarizerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pdf-analyzer': {
+      id: '/pdf-analyzer'
+      path: '/pdf-analyzer'
+      fullPath: '/pdf-analyzer'
+      preLoaderRoute: typeof PdfAnalyzerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/literature': {
+      id: '/literature'
+      path: '/literature'
+      fullPath: '/literature'
+      preLoaderRoute: typeof LiteratureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/knowledge': {
+      id: '/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof KnowledgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/citations': {
+      id: '/citations'
+      path: '/citations'
+      fullPath: '/citations'
+      preLoaderRoute: typeof CitationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +237,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssistantRoute: AssistantRoute,
+  CitationsRoute: CitationsRoute,
+  HistoryRoute: HistoryRoute,
+  KnowledgeRoute: KnowledgeRoute,
+  LiteratureRoute: LiteratureRoute,
+  PdfAnalyzerRoute: PdfAnalyzerRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  SummarizerRoute: SummarizerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
