@@ -13,6 +13,7 @@ import { Route as SummarizerRouteImport } from './routes/summarizer'
 import { Route as PdfAnalyzerRouteImport } from './routes/pdf-analyzer'
 import { Route as LiteratureRouteImport } from './routes/literature'
 import { Route as KnowledgeRouteImport } from './routes/knowledge'
+import { Route as HistoryRouteImport } from './routes/history'
 import { Route as CitationsRouteImport } from './routes/citations'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const KnowledgeRoute = KnowledgeRouteImport.update({
   path: '/knowledge',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CitationsRoute = CitationsRouteImport.update({
   id: '/citations',
   path: '/citations',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
   '/knowledge': typeof KnowledgeRoute
   '/literature': typeof LiteratureRoute
   '/pdf-analyzer': typeof PdfAnalyzerRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
   '/knowledge': typeof KnowledgeRoute
   '/literature': typeof LiteratureRoute
   '/pdf-analyzer': typeof PdfAnalyzerRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/citations': typeof CitationsRoute
+  '/history': typeof HistoryRoute
   '/knowledge': typeof KnowledgeRoute
   '/literature': typeof LiteratureRoute
   '/pdf-analyzer': typeof PdfAnalyzerRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/citations'
+    | '/history'
     | '/knowledge'
     | '/literature'
     | '/pdf-analyzer'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/citations'
+    | '/history'
     | '/knowledge'
     | '/literature'
     | '/pdf-analyzer'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/citations'
+    | '/history'
     | '/knowledge'
     | '/literature'
     | '/pdf-analyzer'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantRoute: typeof AssistantRoute
   CitationsRoute: typeof CitationsRoute
+  HistoryRoute: typeof HistoryRoute
   KnowledgeRoute: typeof KnowledgeRoute
   LiteratureRoute: typeof LiteratureRoute
   PdfAnalyzerRoute: typeof PdfAnalyzerRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KnowledgeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/citations': {
       id: '/citations'
       path: '/citations'
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistantRoute: AssistantRoute,
   CitationsRoute: CitationsRoute,
+  HistoryRoute: HistoryRoute,
   KnowledgeRoute: KnowledgeRoute,
   LiteratureRoute: LiteratureRoute,
   PdfAnalyzerRoute: PdfAnalyzerRoute,
