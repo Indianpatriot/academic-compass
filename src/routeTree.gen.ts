@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SummarizerRouteImport } from './routes/summarizer'
 import { Route as LiteratureRouteImport } from './routes/literature'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as IndexRouteImport } from './routes/index'
 
+const SummarizerRoute = SummarizerRouteImport.update({
+  id: '/summarizer',
+  path: '/summarizer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LiteratureRoute = LiteratureRouteImport.update({
   id: '/literature',
   path: '/literature',
@@ -33,34 +39,45 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/literature': typeof LiteratureRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/literature': typeof LiteratureRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/literature': typeof LiteratureRoute
+  '/summarizer': typeof SummarizerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assistant' | '/literature'
+  fullPaths: '/' | '/assistant' | '/literature' | '/summarizer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assistant' | '/literature'
-  id: '__root__' | '/' | '/assistant' | '/literature'
+  to: '/' | '/assistant' | '/literature' | '/summarizer'
+  id: '__root__' | '/' | '/assistant' | '/literature' | '/summarizer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssistantRoute: typeof AssistantRoute
   LiteratureRoute: typeof LiteratureRoute
+  SummarizerRoute: typeof SummarizerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/summarizer': {
+      id: '/summarizer'
+      path: '/summarizer'
+      fullPath: '/summarizer'
+      preLoaderRoute: typeof SummarizerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/literature': {
       id: '/literature'
       path: '/literature'
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AssistantRoute: AssistantRoute,
   LiteratureRoute: LiteratureRoute,
+  SummarizerRoute: SummarizerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
